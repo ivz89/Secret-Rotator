@@ -7,7 +7,7 @@ The workflow uses **GitHub OIDC federated credentials** for authentication, elim
 ---
 
 ## Architecture Overview
-
+```mermaid
 flowchart LR
     GA["GitHub Actions (OIDC)"]
     ENTRA["Entra ID App (Service Principal)"]
@@ -19,7 +19,7 @@ flowchart LR
     GA -->|3. Update secret in Key Vault| KV
     GA -->|4. SSH to VM| VM
     VM -->|5. Update keystore + restart| VM
-
+```
 ---
 
 ## Repository Structure
