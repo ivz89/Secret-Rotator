@@ -8,18 +8,17 @@ The workflow uses **GitHub OIDC federated credentials** for authentication, elim
 
 ## Architecture Overview
 
-```mermaid
 flowchart LR
     GA["GitHub Actions (OIDC)"]
-    ENTRA["Entra ID App"]
+    ENTRA["Entra ID App (Service Principal)"]
     KV["Azure Key Vault"]
-    VM["VM / Logstash<br/>Keystore + Restart"]
+    VM["Azure VM - Logstash"]
 
-    GA -->|1. Auth (OIDC)| ENTRA
-    ENTRA -->|2. Rotate secret| KV
-    KV -->|3. Update secret| VM
-    VM -->|4. Restart Logstash| VM
-```
+    GA -->|1. Auth via OIDC| ENTRA
+    GA -->|2. Rotate app secret| ENTRA
+    GA -->|3. Update secret in Key Vault| KV
+    GA -->|4. SSH to VM| VM
+    VM -->|5. Update keystore + restart| VM
 
 ---
 
