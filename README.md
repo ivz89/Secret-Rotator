@@ -8,12 +8,14 @@ The workflow uses **GitHub OIDC federated credentials** for authentication, elim
 
 ## Architecture Overview
 
-```mermaid
-flowchart TD
-    A[GitHub Actions (OIDC)] --> B[Entra ID App (rotate secret)]
-    B --> C[Key Vault (update secret)]
-    B --> D[VM (update Logstash keystore)]
-```
+GitHub Actions (OIDC)
+        │
+        ▼
+Entra ID App (rotate secret)
+        │
+ ┌──────┴──────┐
+ │             │
+Key Vault   VM (update Logstash keystore)
 
 ---
 
