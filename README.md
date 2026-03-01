@@ -56,7 +56,7 @@ scripts/
 
 ## 🔁 Workflow Steps
 
-1. Checks Key Vault secret expiry  
+1. Checks Target Entra ID App secret expiry date
 2. Creates new secret if ≤30 days left (valid 90 days)  
 3. Updates Key Vault  
 4. If VM is running:
