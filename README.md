@@ -10,15 +10,15 @@ The workflow uses **GitHub OIDC federated credentials** for authentication, elim
 ```mermaid
 flowchart LR
     GA["GitHub Actions"]
-    FED["Federated Identity App (OIDC trust)"]
-    TARGET["Target App (Secret Rotated)"]
+    FED["Federated Identity Entra ID App (OIDC trust)"]
+    TARGET["Target Entra ID App with Secret"]
     KV["Azure Key Vault"]
     VM["Azure VM - Logstash"]
 
     GA -->|OIDC federated auth| FED
     FED -->|Rotate client secret| TARGET
     GA -->|Update secret in Key Vault| KV
-    GA -->|SSH to VM| VM
+    GA -->|Invoke Azure VM Run Command| VM
     VM -->|Update keystore + restart| VM
 ```
 ---
