@@ -1,6 +1,6 @@
 # Secret-Rotator
 
-This repository contains a **GitHub Actions workflow** to automatically rotate a secret for a target application in **Microsoft Entra ID** and update it in a **Key Vault** and **Logstash Keystore**. This was developed because Microsoft's official Logstash Sentinel plugin does not support Managed Identity authentication to Log Analytics Workspace at the time of this writing. Consequently, a secret rotation is necessary to mitigate availability disruptions to short secret validitiy.
+This repository contains a **GitHub Actions workflow** to automatically rotate a secret for a target application in **Microsoft Entra ID** and update it in a **Key Vault** and **Logstash Keystore**. This was developed because Microsoft's official Logstash Sentinel plugin did not support Managed Identity authentication to Log Analytics Workspace at the time this was written, or was not an option for non Arc-enabled on-premises VMs. Consequently, a secret rotation was necessary to mitigate availability disruptions to short secret validitiy.
 
 The workflow uses **GitHub OIDC federated credentials** for authentication, eliminating the need for storing long-lived Azure secrets.
 
